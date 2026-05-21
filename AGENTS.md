@@ -27,6 +27,13 @@ Local GitHub repository path:
 Project working folder used earlier:
 /Users/nikitosik/vv-project-1
 
+Default workflow for future code changes:
+1. Make and verify changes in the Godot game folder:
+   /Users/nikitosik/vv-project-1
+2. After the game folder is updated, copy the same changed files/assets into
+   the local GitHub repository folder:
+   /Users/nikitosik/gitgodot/GitHub/godotproject
+
 The terminal can run Git and create local commits, but pushing to GitHub from
 Codex currently fails because terminal Git does not have GitHub credentials in
 Keychain. Make code changes locally; the user will push to GitHub through

@@ -24,6 +24,7 @@ var rng := RandomNumberGenerator.new()
 @onready var info_message: Label = %InfoMessage
 @onready var close_recruit_button: Button = %CloseRecruitButton
 @onready var close_barracks_button: Button = %CloseBarracksButton
+@onready var fade_rect: ColorRect = %FadeRect
 
 
 func _ready() -> void:
@@ -61,6 +62,7 @@ func _ready() -> void:
 	recruit_panel.hide()
 	barracks_panel.hide()
 	info_message.hide()
+	fade_in()
 
 
 func hide_all_highlights() -> void:
@@ -75,6 +77,17 @@ func hide_all_highlights() -> void:
 func show_highlight(target: TextureRect) -> void:
 	hide_all_highlights()
 	target.show()
+
+
+func fade_in() -> void:
+	fade_rect.show()
+	fade_rect.color = Color.BLACK
+	fade_rect.modulate.a = 1.0
+	fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	var tween := create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 0.0, 0.45)
+	await tween.finished
 
 
 func _create_test_recruits() -> void:
