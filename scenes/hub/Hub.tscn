@@ -1,0 +1,187 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/hub/Hub.gd" id="1_hub"]
+
+[node name="Hub" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hub")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.055, 0.065, 1)
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 28
+
+[node name="Layout" type="HBoxContainer" parent="RootMargin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="MenuPanel" type="PanelContainer" parent="RootMargin/Layout"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="MenuMargin" type="MarginContainer" parent="RootMargin/Layout/MenuPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MenuVBox" type="VBoxContainer" parent="RootMargin/Layout/MenuPanel/MenuMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Хаб"
+horizontal_alignment = 1
+
+[node name="RecruitButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Рекрут"
+
+[node name="BlacksmithButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Кузнец (появится позже)"
+
+[node name="MarketButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Рынок (появится позже)"
+
+[node name="SortieButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Вылазка (появится позже)"
+
+[node name="HospitalButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Больница (появится позже)"
+
+[node name="BarracksButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Бараки"
+
+[node name="InfoMessage" type="Label" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Эта функция появится позже"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Panels" type="VBoxContainer" parent="RootMargin/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="RecruitPanel" type="PanelContainer" parent="RootMargin/Layout/Panels"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RecruitMargin" type="MarginContainer" parent="RootMargin/Layout/Panels/RecruitPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="RecruitVBox" type="VBoxContainer" parent="RootMargin/Layout/Panels/RecruitPanel/RecruitMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="RecruitTitle" type="Label" parent="RootMargin/Layout/Panels/RecruitPanel/RecruitMargin/RecruitVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Найм героев"
+
+[node name="RecruitScroll" type="ScrollContainer" parent="RootMargin/Layout/Panels/RecruitPanel/RecruitMargin/RecruitVBox"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RecruitList" type="VBoxContainer" parent="RootMargin/Layout/Panels/RecruitPanel/RecruitMargin/RecruitVBox/RecruitScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="CloseRecruitButton" type="Button" parent="RootMargin/Layout/Panels/RecruitPanel/RecruitMargin/RecruitVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "Закрыть"
+
+[node name="BarracksPanel" type="PanelContainer" parent="RootMargin/Layout/Panels"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BarracksMargin" type="MarginContainer" parent="RootMargin/Layout/Panels/BarracksPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="BarracksVBox" type="VBoxContainer" parent="RootMargin/Layout/Panels/BarracksPanel/BarracksMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BarracksTitle" type="Label" parent="RootMargin/Layout/Panels/BarracksPanel/BarracksMargin/BarracksVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Бараки"
+
+[node name="BarracksScroll" type="ScrollContainer" parent="RootMargin/Layout/Panels/BarracksPanel/BarracksMargin/BarracksVBox"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BarracksList" type="VBoxContainer" parent="RootMargin/Layout/Panels/BarracksPanel/BarracksMargin/BarracksVBox/BarracksScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="CloseBarracksButton" type="Button" parent="RootMargin/Layout/Panels/BarracksPanel/BarracksMargin/BarracksVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "Закрыть"

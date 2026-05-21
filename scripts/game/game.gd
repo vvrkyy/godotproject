@@ -1,6 +1,6 @@
 extends Control
 
-@export_file("*.tscn") var main_menu_scene_path := "res://scenes/ui/main_menu.tscn"
+@export_file("*.tscn") var main_menu_scene_path := "res://scenes/main_menu/MainMenu.tscn"
 @export_file("*.tscn") var current_scene_path := "res://scenes/game/game.tscn"
 
 @onready var title_label: Label = %TitleLabel

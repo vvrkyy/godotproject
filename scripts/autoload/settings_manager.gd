@@ -18,7 +18,7 @@ const LANGUAGE_NAMES := {
 const TRANSLATIONS := {
 	"ru": {
 		"main_menu.title": "Главное меню",
-		"main_menu.start": "Начать",
+		"main_menu.start": "Начать игру",
 		"main_menu.continue": "Продолжить",
 		"main_menu.settings": "Настройки",
 		"main_menu.quit": "Выйти",
@@ -35,7 +35,7 @@ const TRANSLATIONS := {
 	},
 	"en": {
 		"main_menu.title": "Main Menu",
-		"main_menu.start": "Start",
+		"main_menu.start": "Start Game",
 		"main_menu.continue": "Continue",
 		"main_menu.settings": "Settings",
 		"main_menu.quit": "Quit",

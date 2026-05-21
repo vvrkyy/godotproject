@@ -1,6 +1,6 @@
 extends Control
 
-@export_file("*.tscn") var game_scene_path := "res://scenes/game/game.tscn"
+const HUB_SCENE_PATH := "res://scenes/hub/Hub.tscn"
 
 @onready var main_panel: Control = %MainPanel
 @onready var settings_panel: Control = %SettingsPanel
@@ -20,7 +20,6 @@ extends Control
 
 func _ready() -> void:
 	start_button.pressed.connect(_on_start_pressed)
-	continue_button.pressed.connect(_on_continue_pressed)
 	settings_button.pressed.connect(_show_settings)
 	quit_button.pressed.connect(_on_quit_pressed)
 	resolution_option.item_selected.connect(_on_resolution_selected)
@@ -29,6 +28,7 @@ func _ready() -> void:
 	back_button.pressed.connect(_show_main)
 	SettingsManager.language_changed.connect(_apply_translations)
 
+	continue_button.disabled = true
 	_populate_resolution_options()
 	_populate_language_options()
 	_sync_settings_controls()
@@ -77,7 +77,6 @@ func _apply_translations() -> void:
 func _show_main() -> void:
 	main_panel.show()
 	settings_panel.hide()
-	_refresh_continue_state()
 	start_button.grab_focus()
 
 
@@ -88,26 +87,14 @@ func _show_settings() -> void:
 	resolution_option.grab_focus()
 
 
-func _refresh_continue_state() -> void:
-	continue_button.disabled = not SaveManager.has_save()
-
-
 func _on_start_pressed() -> void:
-	if not ResourceLoader.exists(game_scene_path):
-		push_error("Game scene was not found: %s" % game_scene_path)
+	if not ResourceLoader.exists(HUB_SCENE_PATH):
+		push_error("Hub scene was not found: %s" % HUB_SCENE_PATH)
 		return
 
-	SaveManager.start_new_game(game_scene_path)
-	get_tree().change_scene_to_file(game_scene_path)
-
-
-func _on_continue_pressed() -> void:
-	var scene_path := SaveManager.get_saved_scene_path(game_scene_path)
-	if not ResourceLoader.exists(scene_path):
-		push_error("Saved scene was not found: %s" % scene_path)
-		return
-
-	get_tree().change_scene_to_file(scene_path)
+	var error := get_tree().change_scene_to_file(HUB_SCENE_PATH)
+	if error != OK:
+		push_error("Could not open hub scene: %s" % HUB_SCENE_PATH)
 
 
 func _on_resolution_selected(index: int) -> void:
