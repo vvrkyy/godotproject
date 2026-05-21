@@ -18,3 +18,16 @@ Known top-level folders seen there:
 - Предметы
 - Противники
 - Персонажи
+
+## GitHub Workflow
+
+Local GitHub repository path:
+/Users/nikitosik/gitgodot/GitHub/godotproject
+
+Project working folder used earlier:
+/Users/nikitosik/vv-project-1
+
+The terminal can run Git and create local commits, but pushing to GitHub from
+Codex currently fails because terminal Git does not have GitHub credentials in
+Keychain. Make code changes locally; the user will push to GitHub through
+GitHub Desktop unless terminal authentication is fixed later.
