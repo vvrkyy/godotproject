@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scenes/hub/Hub.gd" id="1_hub"]
+[ext_resource type="Texture2D" path="res://Hub_Background_1920x1080.png" id="2_background"]
+[ext_resource type="Texture2D" path="res://Highlight_Recruit_1920x1080.png" id="3_recruit"]
+[ext_resource type="Texture2D" path="res://Highlight_Blacksmith_1920x1080.png" id="4_blacksmith"]
+[ext_resource type="Texture2D" path="res://Highlight_Market_1920x1080.png" id="5_market"]
+[ext_resource type="Texture2D" path="res://Highlight_Hospital_1920x1080.png" id="6_hospital"]
+[ext_resource type="Texture2D" path="res://Highlight_Barracks_1920x1080.png" id="7_barracks"]
+[ext_resource type="Texture2D" path="res://Highlight_Expedition_1920x1080.png" id="8_expedition"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_click"]
 
 [node name="Hub" type="Control"]
 layout_mode = 3
@@ -11,177 +20,310 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hub")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="HubBackground" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.05, 0.055, 0.065, 1)
+mouse_filter = 2
+texture = ExtResource("2_background")
+stretch_mode = 6
 
-[node name="RootMargin" type="MarginContainer" parent="."]
+[node name="HighlightRecruit" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 28
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 28
+mouse_filter = 2
+texture = ExtResource("3_recruit")
+stretch_mode = 6
 
-[node name="Layout" type="HBoxContainer" parent="RootMargin"]
-layout_mode = 2
-theme_override_constants/separation = 24
-
-[node name="MenuPanel" type="PanelContainer" parent="RootMargin/Layout"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-
-[node name="MenuMargin" type="MarginContainer" parent="RootMargin/Layout/MenuPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="MenuVBox" type="VBoxContainer" parent="RootMargin/Layout/MenuPanel/MenuMargin"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="TitleLabel" type="Label" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Хаб"
-horizontal_alignment = 1
-
-[node name="RecruitButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-text = "Рекрут"
-
-[node name="BlacksmithButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-text = "Кузнец (появится позже)"
-
-[node name="MarketButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-text = "Рынок (появится позже)"
-
-[node name="SortieButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-text = "Вылазка (появится позже)"
-
-[node name="HospitalButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-text = "Больница (появится позже)"
-
-[node name="BarracksButton" type="Button" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-text = "Бараки"
-
-[node name="InfoMessage" type="Label" parent="RootMargin/Layout/MenuPanel/MenuMargin/MenuVBox"]
+[node name="HighlightBlacksmith" type="TextureRect" parent="."]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
-text = "Эта функция появится позже"
-horizontal_alignment = 1
-autowrap_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_blacksmith")
+stretch_mode = 6
 
-[node name="Panels" type="VBoxContainer" parent="RootMargin/Layout"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 16
-
-[node name="RecruitPanel" type="PanelContainer" parent="RootMargin/Layout/Panels"]
+[node name="HighlightMarket" type="TextureRect" parent="."]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_market")
+stretch_mode = 6
 
-[node name="RecruitMargin" type="MarginContainer" parent="RootMargin/Layout/Panels/RecruitPanel"]
+[node name="HighlightHospital" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_hospital")
+stretch_mode = 6
+
+[node name="HighlightBarracks" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_barracks")
+stretch_mode = 6
+
+[node name="HighlightExpedition" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_expedition")
+stretch_mode = 6
+
+[node name="ResourceBarPlaceholder" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.1
+grow_horizontal = 2
+
+[node name="RecruitClickArea" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.16
+anchor_top = 0.18
+anchor_right = 0.36
+anchor_bottom = 0.55
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_click")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_click")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_click")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_click")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_click")
+flat = true
+
+[node name="BlacksmithClickArea" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.37
+anchor_top = 0.17
+anchor_right = 0.63
+anchor_bottom = 0.52
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_click")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_click")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_click")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_click")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_click")
+flat = true
+
+[node name="MarketClickArea" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.64
+anchor_top = 0.18
+anchor_right = 0.86
+anchor_bottom = 0.55
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_click")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_click")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_click")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_click")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_click")
+flat = true
+
+[node name="HospitalClickArea" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.15
+anchor_top = 0.55
+anchor_right = 0.37
+anchor_bottom = 0.88
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_click")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_click")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_click")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_click")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_click")
+flat = true
+
+[node name="BarracksClickArea" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.37
+anchor_top = 0.62
+anchor_right = 0.62
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_click")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_click")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_click")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_click")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_click")
+flat = true
+
+[node name="ExpeditionClickArea" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.64
+anchor_top = 0.55
+anchor_right = 0.87
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_click")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_click")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_click")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_click")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_click")
+flat = true
+
+[node name="RecruitPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 0.54
+anchor_top = 0.14
+anchor_right = 0.96
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RecruitMargin" type="MarginContainer" parent="RecruitPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 18
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 18
 theme_override_constants/margin_bottom = 18
 
-[node name="RecruitVBox" type="VBoxContainer" parent="RootMargin/Layout/Panels/RecruitPanel/RecruitMargin"]
+[node name="RecruitVBox" type="VBoxContainer" parent="RecruitPanel/RecruitMargin"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="RecruitTitle" type="Label" parent="RootMargin/Layout/Panels/RecruitPanel/RecruitMargin/RecruitVBox"]
+[node name="RecruitTitle" type="Label" parent="RecruitPanel/RecruitMargin/RecruitVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Найм героев"
 
-[node name="RecruitScroll" type="ScrollContainer" parent="RootMargin/Layout/Panels/RecruitPanel/RecruitMargin/RecruitVBox"]
-custom_minimum_size = Vector2(0, 300)
+[node name="RecruitScroll" type="ScrollContainer" parent="RecruitPanel/RecruitMargin/RecruitVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="RecruitList" type="VBoxContainer" parent="RootMargin/Layout/Panels/RecruitPanel/RecruitMargin/RecruitVBox/RecruitScroll"]
+[node name="RecruitList" type="VBoxContainer" parent="RecruitPanel/RecruitMargin/RecruitVBox/RecruitScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="CloseRecruitButton" type="Button" parent="RootMargin/Layout/Panels/RecruitPanel/RecruitMargin/RecruitVBox"]
+[node name="CloseRecruitButton" type="Button" parent="RecruitPanel/RecruitMargin/RecruitVBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 text = "Закрыть"
 
-[node name="BarracksPanel" type="PanelContainer" parent="RootMargin/Layout/Panels"]
+[node name="BarracksPanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+layout_mode = 1
+anchor_left = 0.54
+anchor_top = 0.14
+anchor_right = 0.96
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="BarracksMargin" type="MarginContainer" parent="RootMargin/Layout/Panels/BarracksPanel"]
+[node name="BarracksMargin" type="MarginContainer" parent="BarracksPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 18
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 18
 theme_override_constants/margin_bottom = 18
 
-[node name="BarracksVBox" type="VBoxContainer" parent="RootMargin/Layout/Panels/BarracksPanel/BarracksMargin"]
+[node name="BarracksVBox" type="VBoxContainer" parent="BarracksPanel/BarracksMargin"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="BarracksTitle" type="Label" parent="RootMargin/Layout/Panels/BarracksPanel/BarracksMargin/BarracksVBox"]
+[node name="BarracksTitle" type="Label" parent="BarracksPanel/BarracksMargin/BarracksVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Бараки"
 
-[node name="BarracksScroll" type="ScrollContainer" parent="RootMargin/Layout/Panels/BarracksPanel/BarracksMargin/BarracksVBox"]
-custom_minimum_size = Vector2(0, 300)
+[node name="BarracksScroll" type="ScrollContainer" parent="BarracksPanel/BarracksMargin/BarracksVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BarracksList" type="VBoxContainer" parent="RootMargin/Layout/Panels/BarracksPanel/BarracksMargin/BarracksVBox/BarracksScroll"]
+[node name="BarracksList" type="VBoxContainer" parent="BarracksPanel/BarracksMargin/BarracksVBox/BarracksScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="CloseBarracksButton" type="Button" parent="RootMargin/Layout/Panels/BarracksPanel/BarracksMargin/BarracksVBox"]
+[node name="CloseBarracksButton" type="Button" parent="BarracksPanel/BarracksMargin/BarracksVBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 text = "Закрыть"
+
+[node name="InfoMessage" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 0.35
+anchor_top = 0.11
+anchor_right = 0.65
+anchor_bottom = 0.17
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Эта функция появится позже"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

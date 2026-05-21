@@ -3,12 +3,20 @@ extends Control
 var available_heroes: Array[HeroData] = []
 var rng := RandomNumberGenerator.new()
 
-@onready var recruit_button: Button = %RecruitButton
-@onready var blacksmith_button: Button = %BlacksmithButton
-@onready var market_button: Button = %MarketButton
-@onready var sortie_button: Button = %SortieButton
-@onready var hospital_button: Button = %HospitalButton
-@onready var barracks_button: Button = %BarracksButton
+@onready var highlight_recruit: TextureRect = %HighlightRecruit
+@onready var highlight_blacksmith: TextureRect = %HighlightBlacksmith
+@onready var highlight_market: TextureRect = %HighlightMarket
+@onready var highlight_hospital: TextureRect = %HighlightHospital
+@onready var highlight_barracks: TextureRect = %HighlightBarracks
+@onready var highlight_expedition: TextureRect = %HighlightExpedition
+
+@onready var recruit_click_area: Button = %RecruitClickArea
+@onready var blacksmith_click_area: Button = %BlacksmithClickArea
+@onready var market_click_area: Button = %MarketClickArea
+@onready var hospital_click_area: Button = %HospitalClickArea
+@onready var barracks_click_area: Button = %BarracksClickArea
+@onready var expedition_click_area: Button = %ExpeditionClickArea
+
 @onready var recruit_panel: PanelContainer = %RecruitPanel
 @onready var barracks_panel: PanelContainer = %BarracksPanel
 @onready var recruit_list: VBoxContainer = %RecruitList
@@ -20,13 +28,32 @@ var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
 	rng.randomize()
+	hide_all_highlights()
 
-	recruit_button.pressed.connect(_on_recruit_pressed)
-	blacksmith_button.pressed.connect(_on_locked_feature_pressed)
-	market_button.pressed.connect(_on_locked_feature_pressed)
-	sortie_button.pressed.connect(_on_locked_feature_pressed)
-	hospital_button.pressed.connect(_on_locked_feature_pressed)
-	barracks_button.pressed.connect(_on_barracks_pressed)
+	recruit_click_area.mouse_entered.connect(show_highlight.bind(highlight_recruit))
+	recruit_click_area.mouse_exited.connect(hide_all_highlights)
+	recruit_click_area.pressed.connect(_on_recruit_pressed)
+
+	blacksmith_click_area.mouse_entered.connect(show_highlight.bind(highlight_blacksmith))
+	blacksmith_click_area.mouse_exited.connect(hide_all_highlights)
+	blacksmith_click_area.pressed.connect(_on_blacksmith_pressed)
+
+	market_click_area.mouse_entered.connect(show_highlight.bind(highlight_market))
+	market_click_area.mouse_exited.connect(hide_all_highlights)
+	market_click_area.pressed.connect(_on_market_pressed)
+
+	hospital_click_area.mouse_entered.connect(show_highlight.bind(highlight_hospital))
+	hospital_click_area.mouse_exited.connect(hide_all_highlights)
+	hospital_click_area.pressed.connect(_on_hospital_pressed)
+
+	barracks_click_area.mouse_entered.connect(show_highlight.bind(highlight_barracks))
+	barracks_click_area.mouse_exited.connect(hide_all_highlights)
+	barracks_click_area.pressed.connect(_on_barracks_pressed)
+
+	expedition_click_area.mouse_entered.connect(show_highlight.bind(highlight_expedition))
+	expedition_click_area.mouse_exited.connect(hide_all_highlights)
+	expedition_click_area.pressed.connect(_on_expedition_pressed)
+
 	close_recruit_button.pressed.connect(_on_close_recruit_pressed)
 	close_barracks_button.pressed.connect(_on_close_barracks_pressed)
 
@@ -34,6 +61,20 @@ func _ready() -> void:
 	recruit_panel.hide()
 	barracks_panel.hide()
 	info_message.hide()
+
+
+func hide_all_highlights() -> void:
+	highlight_recruit.hide()
+	highlight_blacksmith.hide()
+	highlight_market.hide()
+	highlight_hospital.hide()
+	highlight_barracks.hide()
+	highlight_expedition.hide()
+
+
+func show_highlight(target: TextureRect) -> void:
+	hide_all_highlights()
+	target.show()
 
 
 func _create_test_recruits() -> void:
@@ -68,6 +109,7 @@ func _create_test_hero(hero_name: String, passive_skill: String, trait_name: Str
 
 
 func _on_recruit_pressed() -> void:
+	hide_all_highlights()
 	info_message.hide()
 	barracks_panel.hide()
 	recruit_panel.show()
@@ -75,16 +117,34 @@ func _on_recruit_pressed() -> void:
 
 
 func _on_barracks_pressed() -> void:
+	hide_all_highlights()
 	info_message.hide()
 	recruit_panel.hide()
 	barracks_panel.show()
 	_render_barracks_list()
 
 
-func _on_locked_feature_pressed() -> void:
+func _on_blacksmith_pressed() -> void:
+	_show_locked_message("Кузнец появится позже")
+
+
+func _on_market_pressed() -> void:
+	_show_locked_message("Рынок появится позже")
+
+
+func _on_hospital_pressed() -> void:
+	_show_locked_message("Больница появится позже")
+
+
+func _on_expedition_pressed() -> void:
+	_show_locked_message("Вылазка появится позже")
+
+
+func _show_locked_message(message: String) -> void:
+	hide_all_highlights()
 	recruit_panel.hide()
 	barracks_panel.hide()
-	info_message.text = "Эта функция появится позже"
+	info_message.text = message
 	info_message.show()
 
 
